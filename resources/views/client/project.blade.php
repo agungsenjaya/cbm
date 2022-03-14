@@ -1,11 +1,17 @@
 @extends('layouts.index')
 @section('content')
-<div class="bg-project align-items-center d-flex">
-    <div class="container space-m">
-    <div class="text-center">
-            <h1 class="fw-bold">Proyek Pengecatan</h1>
-            <p>Daftar proyek yang sudah dikerjakan oleh team cbm</p>
+<div class="bg-cbm text-white">
+    <div class="bg-shape-1 space-m">
+    <div class="container">
+    <div class="row">
+    <div class="text-center col-md-8 offset-md-2">
+    <h2 class="fw-bold title-1 mb-0">
+              Proyek Pengecatan
+            </h2>
+            <p>Daftar proyek pengecatan yang dikerjakan</p>
         </div>
+    </div>
+    </div>
     </div>
 </div>
 <section class="space-m">
@@ -24,12 +30,18 @@
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach($project->reverse() as $pro)
+        @if($pro->img_af)
   <a href="{{ route('project.view',['id' => $pro -> slug]) }}" class="col text-dark no-dec">
+      @else
+      <a href="javascript:void(0)" data-caption="{{ $pro->title }}" data-fancybox="{{ $pro->id }}" data-src="{{ url($pro->img) }}" class="col text-dark no-dec">
+      @endif
     <div class="card h-100 border-0">
-      <img src="{{ $pro->img }}" class="card-img-top rounded-0" alt="...">
+    <div class="position-relative">
+        <div class="img gray-1 rounded" style="background:url({{ $pro->img }});background-position:center"></div>
+        <div class="to-center grad-2 rounded"></div>
+      </div>
       <div class="card-body">
-        <h5 class="card-title text-capitalize">{{ $pro->title }}</h5>
-        <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+        <p class="card-title fw-semibold title-1 text-cbm text-capitalize">{{ $pro->title }}</p>
       </div>
       <div class="card-footer d-flex justify-content-between bg-transparent">
           <div>

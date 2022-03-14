@@ -22,9 +22,16 @@ $no = 1;
   </div>
   <div class="card shadow bg-cbm text-white">
     <div class="card-body bg-shape-1 h-100">
-      <p class="card-title fw-bold">Total Sliders</p>
-      <h1 class="display-4 fw-bold">{{ counTing(count($slider)) }}</h1>
-      <p class="card-text"><small class="badge bg-cbm-2"><i class="bi bi-check-circle-fill me-2"></i>Jumlah sliders home</small></p>
+      <p class="card-title fw-bold">Total Company</p>
+      <h1 class="display-4 fw-bold">{{ counTing(count($brand)) }}</h1>
+      <p class="card-text"><small class="badge bg-cbm-2"><i class="bi bi-check-circle-fill me-2"></i>Jumlah perusahaan</small></p>
+    </div>
+  </div>
+  <div class="card shadow bg-cbm text-white">
+    <div class="card-body bg-shape-1 h-100">
+      <p class="card-title fw-bold">Total Contact</p>
+      <h1 class="display-4 fw-bold">{{ counTing(count($contact)) }}</h1>
+      <p class="card-text"><small class="badge bg-cbm-2"><i class="bi bi-check-circle-fill me-2"></i>Jumlah contact mail</small></p>
     </div>
   </div>
 </div>

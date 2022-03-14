@@ -6,8 +6,8 @@
     <div class="justify-content-end d-flex pt-2">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('projects.index') }}">Projects</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Edit Proejct</li>
+            <li class="breadcrumb-item"><a href="{{ route('blogs.index') }}">Blogs</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Blog</li>
           </ol>
         </nav>
       </div>
@@ -16,7 +16,7 @@
           {{ implode('', $errors->all('<div>:message</div>')) }}
       @endif
 
-    <form method="POST" action="{{ route('projects.update',['id' => $data -> id]) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('blogs.update',['id' => $data -> id]) }}" enctype="multipart/form-data">
         @csrf
         <div class="row mb-3">
   <div class="col">
@@ -34,22 +34,26 @@
     </select>
   </div>
   </div>
-  <div class="my-3">
-    <label for="" class="form-label">Gambar Utama</label>
+  <div class="mb-3">
+    <label for="" class="form-label">Gambar Utama
+    <span class="ms-2 fw-light"> <a href="javascript:void(0)" data-caption="{{ $data->title }}" data-fancybox="{{ $data->id }}" data-src="{{ url($data->img) }}" class="">
+          <i class="bi bi-eye-fill me-2"></i>Current Images
+        </a></span>
+    </label>
     <div class="position-relative">
-    <div class="d-flex justify-content-between p-3 bg-light border border-dotted rounded a1 hvr-input">
+    <input type="file" class="file form-control form-control-lg" name="img">
+    <div class="to-center d-flex align-items-center justify-content-between px-3 form-control a1 hvr-input">
       <div>
         <span class="a2 opacity-50">Masukan Gambar</span>
       </div>
       <div>
         <div class="ps-3 border-start">
-          <i class="bi bi-image-fill"></i> 
+          <i class="bi bi-image-fill text-secondary"></i> 
         </div>
       </div>
     </div>
-    <input type="file" class="file d-none" name="img">
     </div>
-  </div>
+    </div>
   <div class="mb-3">
     <label for="" class="form-label">Description</label>
     <textarea id="summer" name="content">{{ $data->content }}</textarea>

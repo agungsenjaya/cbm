@@ -14,9 +14,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <h2 class="text-capitalize fw-semibold text-center mb-4">{{ $data->title }}</h2>
-                <!-- <img src="{{ url('') . '/' . $data->img }}" alt="" width="100%"> -->
-                <img src="https://dummyimage.com/600x350" alt="" width="100%">
+                <h2 class="text-capitalize fw-semibold title-1 text-center mb-4 text-cbm">{{ $data->title }}</h2>
+                <img src="{{ url('') . '/' . $data->img }}" alt="" width="100%">
                 <div class="card my-4 border-0 bg-light">
                     <div class="card-body d-flex justify-content-between">
                     <div class="align-self-center">
@@ -35,7 +34,7 @@
                 <hr>
                 <div class="d-flex justify-content-between">
                     <div>
-                        <span class="fw-semibold">
+                        <span class="fw-semibold title-1 text-cbm">
                             Bagikan
                         </span>
                     </div>

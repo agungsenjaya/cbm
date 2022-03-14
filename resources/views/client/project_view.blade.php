@@ -1,6 +1,6 @@
 @extends('layouts.index')
 @section('content')
-<div class="py-3 bg-cbm">
+<div class="py-3 bg-cbm-2">
     <div class="container justify-content-center d-flex">
     <nav aria-label="breadcrumb">
   <ol class="breadcrumb mb-0">
@@ -13,10 +13,9 @@
 <section class="space-m">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <h2 class="text-capitalize fw-semibold text-center mb-4">{{ $data->title }}</h2>
-                <!-- <img src="{{ url('') . '/' . $data->img }}" alt="" width="100%"> -->
-                <img src="https://dummyimage.com/600x350" alt="" width="100%">
+            <div class="col-md-10 offset-md-1">
+                <h2 class="text-capitalize fw-semibold title-1 text-center mb-4 text-cbm">{{ $data->title }}</h2>
+                <img src="{{ url('') . '/' . $data->img }}" alt="" width="100%">
                 <div class="card my-4 border-0 bg-light">
                     <div class="card-body d-flex justify-content-between">
                     <div class="align-self-center">
@@ -29,13 +28,31 @@
                     </div>
                     </div>
                 </div>
-                <div class="">
-                    {!!  $data->content !!}
+                @if($data->img_af)
+                @php
+                $rr = json_decode($data->img_af);
+                @endphp
+                <section class="">
+                <div class="row">
+                    @foreach($rr as $r)
+                    <div class="col-md-4 col-6 mb-3">
+                        <a href="javascript:void(0)" data-caption="{{ $data->title }}" data-fancybox="{{ $data->id }}" data-src="{{ url('dat/public' . $r) }}" class="">
+                            <div class="position-relative">
+                                <div class="img" style="background:url({{ url('dat/public' . $r) }});background-position:center"></div>
+                                <div class="to-center z-in-1 d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-plus-circle-fill h2 text-cbm"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    @endforeach
                 </div>
+                </section>
+                @endif
                 <hr>
                 <div class="d-flex justify-content-between">
                     <div>
-                        <span class="fw-semibold">
+                        <span class="fw-semibold title-1 text-cbm">
                             Bagikan
                         </span>
                     </div>

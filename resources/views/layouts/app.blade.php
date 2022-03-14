@@ -16,6 +16,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     @yield('css')
 </head>
 <body>
@@ -30,7 +31,7 @@
                 <nav class="navbar navbar-light bg-cbm-2 p-0" style="height:5em">
                     <a class="navbar-brand py-0 px-3" href="{{ route('home') }}">
                       <!-- <div class="logo-admin"></div> -->
-                      <img src="{{ asset('img/cbm-dark.svg') }}" alt="" width="100%" class="opacity-0">
+                      <img src="{{ asset('img/cbm-white.svg') }}" alt="" width="200" class="img-fluid">
                     </a>
                 </nav>
                 <div class="list-group list-group-flush nav-admin line-h-2">
@@ -65,11 +66,25 @@
               </div>
                     <a href="javascript:void(0)" class="list-group-item list-group-item-action d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#nav-3" aria-expanded="true">
                     <div>
-                    <i class="bi bi-file-earmark-break-fill me-3"></i>Sliders
+                    <i class="bi bi-bootstrap-fill me-3"></i>Brands
                   </div>
                   <div><i class="bi bi-chevron-down"></i></div>
                 </a>
                 <div class="bg-lab-2 collapse" id="nav-3" style="">
+
+                <div class="list-group list-group-flush nav-res">
+                  <a href="{{ route('brands.index') }}" class="list-group-item list-group-item-action "><i class="bi bi-dot me-3"></i>Table Brands</a>
+                  <a href="{{ route('brands.create') }}" class="list-group-item list-group-item-action "><i class="bi bi-dot me-3"></i>Tambah Brands</a>
+                </div>
+                
+              </div>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#nav-4" aria-expanded="true">
+                    <div>
+                    <i class="bi bi-file-earmark-break-fill me-3"></i>Sliders
+                  </div>
+                  <div><i class="bi bi-chevron-down"></i></div>
+                </a>
+                <div class="bg-lab-2 collapse" id="nav-4" style="">
 
                 <div class="list-group list-group-flush nav-res">
                   <a href="{{ route('sliders.index') }}" class="list-group-item list-group-item-action "><i class="bi bi-dot me-3"></i>Table Sliders</a>
@@ -133,11 +148,19 @@
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script>
-        Fancybox.bind("[data-fancybox]", {
-      Image: {
-        zoom: true,
-      },
-    });
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+      });
+      Fancybox.bind("[data-fancybox]", {
+        Image: {
+          zoom: true,
+        },
+      });
+
+        
+
     </script>
     @yield('js')
 </body>

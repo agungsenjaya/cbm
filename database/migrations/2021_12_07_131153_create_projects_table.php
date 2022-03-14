@@ -18,8 +18,8 @@ class CreateProjectsTable extends Migration
             $table->integer('user_id');
             $table->string('title');
             $table->string('img');
-            $table->enum('kategori',['rumah','apartemen','proyek','industri','perumahan']);
-            $table->longText('content');
+            $table->string('img_af')->nullable();
+            $table->enum('kategori',['rumah','proyek']);
             $table->string('slug');
             $table->timestamps();
         });

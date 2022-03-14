@@ -14,7 +14,7 @@
 
     <form method="POST" action="{{ route('sliders.store') }}" enctype="multipart/form-data">
         @csrf
-        <div class="row">
+        <div class="row mb-3">
         <div class="col">
     <label for="" class="form-label">Judul Slider</label>
     <input type="text" class="form-control form-control-lg" name="title" required>
@@ -24,37 +24,37 @@
     <input type="text" class="form-control form-control-lg" name="link" required>
   </div>
   </div>
-  <div class="my-3 row">
+  <div class="row mb-3">
   <div class="col">
     <label for="" class="form-label">Versi Website</label>
     <div class="position-relative">
-    <div class="d-flex justify-content-between p-3 bg-light border border-dotted rounded a1 hvr-input">
+    <input type="file" class="file-1 form-control form-control-lg" name="img_web" required>
+    <div class="to-center d-flex align-items-center justify-content-between px-3 form-control a1 hvr-input">
       <div>
         <span class="a2 opacity-50">Masukan Gambar</span>
       </div>
       <div>
         <div class="ps-3 border-start">
-          <i class="bi bi-image-fill"></i> 
+          <i class="bi bi-image-fill text-secondary"></i> 
         </div>
       </div>
     </div>
-    <input type="file" class="file-1 d-none" name="img_web" required>
     </div>
   </div>
   <div class="col">
     <label for="" class="form-label">Versi Mobile</label>
     <div class="position-relative">
-    <div class="d-flex justify-content-between p-3 bg-light border border-dotted rounded a3 hvr-input">
+    <input type="file" class="file-2 form-control form-control-lg" name="img_mobile" required>
+    <div class="to-center d-flex align-items-center justify-content-between px-3 form-control a3 hvr-input">
       <div>
         <span class="a4 opacity-50">Masukan Gambar</span>
       </div>
       <div>
         <div class="ps-3 border-start">
-          <i class="bi bi-image-fill"></i> 
+          <i class="bi bi-image-fill text-secondary"></i> 
         </div>
       </div>
     </div>
-    <input type="file" class="file-2 d-none" name="img_mobile" required>
     </div>
   </div>
   </div>

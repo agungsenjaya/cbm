@@ -44,7 +44,6 @@ class ProjectController extends Controller
             'title' => 'required|unique:projects',
             'img' => 'required|mimes:jpg,bmp,png',
             'kategori' => 'required',
-            'content' => 'required'
         ]);
         if ($valid->fails()) {
             Session::flash('failed','Terjadi kesalahn saat memasukan data');
@@ -57,29 +56,11 @@ class ProjectController extends Controller
             $img_new = time().($img->getClientOriginalName());
             $img->move('upload/project', strtolower($img_new));
 
-            $detail=$request->input('content');
-            $dom = new \DomDocument();
-            $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
-            $images = $dom->getElementsByTagName('img');
-            foreach($images as $k => $img){
-                $data = $img->getAttribute('src');
-                list($type, $data) = explode(';', $data);
-                list(, $data)      = explode(',', $data);
-                $data = base64_decode($data);
-                $image_name= "/upload/project/" . time().$k.'.png';
-                $path = public_path() . $image_name;
-                file_put_contents($path, $data);
-                $img->removeAttribute('src');
-                $img->setAttribute('src', $image_name);
-            }
-            $detail = $dom->saveHTML();
-
             $data = Project::create([
                 'title' => strtolower($request->title),
                 'img' => 'upload/project/' . strtolower($img_new),
                 'user_id' => Auth::user()->id,
                 'kategori' => $request->kategori,
-                'content' => $detail,
                 'slug' => Str::slug(strtolower($request->title))
             ]);
             if ($data) {
@@ -125,7 +106,6 @@ class ProjectController extends Controller
         $data = Project::find($id);
         $valid = Validator::make($request->all(),[
             'title' => 'required',
-            'content' => 'required'
         ]);
         if ($valid->fails()) {
             Session::flash('failed','Terjadi kesalahn saat memasukan data');
@@ -141,28 +121,8 @@ class ProjectController extends Controller
                 $data->img = 'upload/project/' . strtolower($img_new);
             }
 
-            libxml_use_internal_errors(true);
-            $detail=$request->input('content');
-            $dom = new \DomDocument();
-            $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
-            $images = $dom->getElementsByTagName('img');
-            foreach($images as $k => $img){
-                $data = $img->getAttribute('src');
-                list($type, $data) = explode(';', $data);
-                list(, $data)      = explode(',', $data);
-                $data = base64_decode($data);
-                $image_name= "/upload/project/" . time().$k.'.png';
-                $path = public_path() . $image_name;
-                file_put_contents($path, $data);
-                $img->removeAttribute('src');
-                $img->setAttribute('src', $image_name);
-            }
-            $detail = $dom->saveHTML();
-                    
-
             $data->title = strtolower($request->title);
             $data->kategori = $request->kategori;
-            $data->content = $detail;
             $data->slug = Str::slug(strtolower($request->title));
             $data->save();
 

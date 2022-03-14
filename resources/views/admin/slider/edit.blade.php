@@ -36,36 +36,36 @@
     <label for="" class="form-label">Versi Website<span class="ms-2 fw-light"> <a href="javascript:void(0)" data-caption="Versi Website" data-fancybox="{{ $data->id }}" data-src="{{ url($data->img_web) }}" class="">
           <i class="bi bi-eye-fill me-2"></i>Current Images
         </a></span></label>
-    <div class="position-relative">
-    <div class="d-flex justify-content-between p-3 bg-light border border-dotted rounded a1 hvr-input">
+        <div class="position-relative">
+    <input type="file" class="file-1 form-control form-control-lg" name="img_web">
+    <div class="to-center d-flex align-items-center justify-content-between px-3 form-control a1 hvr-input">
       <div>
         <span class="a2 opacity-50">Masukan Gambar</span>
       </div>
       <div>
         <div class="ps-3 border-start">
-          <i class="bi bi-image-fill"></i> 
+          <i class="bi bi-image-fill text-secondary"></i> 
         </div>
       </div>
     </div>
-    <input type="file" class="file-1 d-none" name="img_web">
     </div>
   </div>
   <div class="col">
   <label for="" class="form-label">Versi Mobile<span class="ms-2 fw-light"> <a href="javascript:void(0)" data-caption="Versi Mobile" data-fancybox="{{ $data->id }}" data-src="{{ url($data->img_mobile) }}" class="">
           <i class="bi bi-eye-fill me-2"></i>Current Images
         </a></span></label>
-    <div class="position-relative">
-    <div class="d-flex justify-content-between p-3 bg-light border border-dotted rounded a3 hvr-input">
+        <div class="position-relative">
+    <input type="file" class="file-2 form-control form-control-lg" name="img_mobile">
+    <div class="to-center d-flex align-items-center justify-content-between px-3 form-control a3 hvr-input">
       <div>
         <span class="a4 opacity-50">Masukan Gambar</span>
       </div>
       <div>
         <div class="ps-3 border-start">
-          <i class="bi bi-image-fill"></i> 
+          <i class="bi bi-image-fill text-secondary"></i> 
         </div>
       </div>
     </div>
-    <input type="file" class="file-2 d-none" name="img_mobile">
     </div>
   </div>
   </div>

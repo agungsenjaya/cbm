@@ -65,6 +65,7 @@ class SliderController extends Controller
                 'img_web' => 'upload/slider/' . strtolower($img_web_new),
                 'user_id' => Auth::user()->id,
                 'img_mobile' => 'upload/slider/' . strtolower($img_mobile_new),
+                'content' => $request->content,
                 'link' => $request->link,
                 'title' => strtolower($request->title),
                 'slug' => Str::slug(strtolower($request->title)),
@@ -139,6 +140,7 @@ class SliderController extends Controller
             $data->title = strtolower($request->title);
             $data->slug = Str::slug(strtolower($request->title));
             $data->link = $request->link;
+            $data->content = $request->content;
             $data->status = $request->status;
             $data->save();
 

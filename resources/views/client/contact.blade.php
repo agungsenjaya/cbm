@@ -1,29 +1,24 @@
 @extends('layouts.index')
 @section('content')
-<section class="space-m">
+<div class="bg-cbm text-white">
+    <div class="bg-shape-1 space-m">
     <div class="container">
-        <!-- <div class="text-center mb-4">
-        <h2 class="fw-semibold">Hubungi Kami</h2>
-        </div> -->
-        <div class="row">
-            <!-- <div class="col-md-6 align-self-center">
-                <div class="p-4">
-                    <h2 class="fw-semibold">Hubungi Kami</h2>
-                    <p>CV. Central Bangun Mandiri (CBM) Jl.Suniaraja No. 83 Bandung
-Jawa Barat - Indonesia.</p>
-<div class="">
-    <div class="mb-4">
-        <a href="tel:(405)555-0128" class="btn btn-cbm w-100"><i class="bi bi-envelope me-2"></i>info@cbm.co.id</a>
+    <div class="row">
+    <div class="text-center col-md-8 offset-md-2">
+    <h2 class="fw-bold title-1 mb-0">
+              Hubungi Kami
+            </h2>
+            <p>Jika anda mempunyai pertanyaan seputar pengecatan</p>
+        </div>
     </div>
-    <div class="row g-0">
-        <a href="tel:(405)555-0128" class="btn btn-light text-cbm col-md"><i class="bi bi-telephone me-2"></i>022 - 123123</a>
-        <a href="tel:(405)555-0128" class="btn btn-light text-cbm col-md"><i class="bi bi-whatsapp me-2"></i>022 - 123123</a>
+    </div>
     </div>
 </div>
-                </div>
-            </div> -->
+<section class="space-m">
+    <div class="container">
+        <div class="row">
             <div class="col-md-6 offset-md-3">
-               <div class="card shadow-sm">
+               <div class="card shadow-sm border-0">
                    <div class="card-body">
                    <form action="{{ route('contact.send') }}" method="POST">
                        @csrf
@@ -39,7 +34,7 @@ Jawa Barat - Indonesia.</p>
                         <label for="" class="form-label">Masukan Pesan</label>
                         <textarea name="message" class="form-control" id="" cols="30" rows="10" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-cbm">Kirim Pesan</button>
+                    <button type="submit" class="btn btn-scs w-100">Kirim Pesan</button>
                     </form>
                    </div>
                </div> 

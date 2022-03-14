@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::GET('projects/search/{id}','ApiController@project_search');
+Route::POST('projects/store','ApiController@project_store');

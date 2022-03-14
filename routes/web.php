@@ -50,7 +50,8 @@ Route::GET('/mailist', 'HomeController@mailist')->name('mailist');
 Route::GET('/projects','ProjectController@index')->name('projects.index');
 Route::GET('/projects/edit/{id}','ProjectController@edit')->name('projects.edit');
 Route::POST('/projects/update/{id}','ProjectController@update')->name('projects.update');
-Route::POST('/projects/store','ProjectController@store')->name('projects.store');
+// Route::POST('/projects/store','ProjectController@store')->name('projects.store');
+Route::POST('/projects/store','ApiController@project_store')->name('projects.store');
 Route::GET('/projects/create','ProjectController@create')->name('projects.create');
 
 Route::GET('/blogs','BlogController@index')->name('blogs.index');
@@ -58,6 +59,12 @@ Route::GET('/blogs/edit/{id}','BlogController@edit')->name('blogs.edit');
 Route::POST('/blogs/update/{id}','BlogController@update')->name('blogs.update');
 Route::POST('/blogs/store','BlogController@store')->name('blogs.store');
 Route::GET('/blogs/create','BlogController@create')->name('blogs.create');
+
+Route::GET('/brands','BrandController@index')->name('brands.index');
+Route::GET('/brands/edit/{id}','BrandController@edit')->name('brands.edit');
+Route::POST('/brands/update/{id}','BrandController@update')->name('brands.update');
+Route::POST('/brands/store','BrandController@store')->name('brands.store');
+Route::GET('/brands/create','BrandController@create')->name('brands.create');
 
 Route::GET('/sliders','SliderController@index')->name('sliders.index');
 Route::GET('/sliders/edit/{id}','SliderController@edit')->name('sliders.edit');

@@ -23,4 +23,15 @@
   </div>
   @endif
 
+  <div id="liveMod" class="toast bg-success text-white p-2" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header bg-success text-white">
+      <i class="bi bi-check-circle-fill me-2"></i>
+      <strong class="me-auto">Success</strong>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Data berhasil dimasukan kedalam database
+    </div>
+  </div>
+
 </div>

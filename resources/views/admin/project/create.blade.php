@@ -11,9 +11,10 @@
           </ol>
         </nav>
       </div>
-
-    <form method="POST" action="{{ route('projects.store') }}" enctype="multipart/form-data">
+      
+      <form method="post" action="{{ route('projects.store') }}" id="ajax-form" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
   <div class="row mb-3">
   <div class="col">
     <label for="" class="form-label">Judul Project</label>
@@ -24,70 +25,78 @@
     <select name="kategori" required class="form-select form-select-lg">
       <option>-- Select Option --</option>
       <option value="rumah">rumah</option>
-      <option value="industri">industri</option>
-      <option value="apartemen">apartemen</option>
-      <option value="perumahan">perumahan</option>
       <option value="proyek">proyek</option>
     </select>
   </div>
   </div>
-  <div class="my-3">
+  <div class="mb-3">
     <label for="" class="form-label">Gambar Utama</label>
     <div class="position-relative">
-    <div class="d-flex justify-content-between p-3 bg-light border border-dotted rounded a1 hvr-input">
+    <input type="file" class="file form-control form-control-lg" name="img" required>
+    <div class="to-center d-flex align-items-center justify-content-between px-3 form-control a1 hvr-input">
       <div>
         <span class="a2 opacity-50">Masukan Gambar</span>
       </div>
       <div>
         <div class="ps-3 border-start">
-          <i class="bi bi-image-fill"></i> 
+          <i class="bi bi-image-fill text-secondary"></i> 
         </div>
       </div>
     </div>
-    <input type="file" class="file d-none" name="img" required>
     </div>
   </div>
   <div class="mb-3">
-    <label for="" class="form-label">Description</label>
-    <textarea id="summer" name="content"></textarea>
+    <label for="" class="form-label">Gambar Lainnya</label>
+    <input id="images" class="form-control d-none" type="file" name="img_af[]" accept="image/*" placeholder="Choose images" multiple >
+    <a href="javascript:void(0)" class="a3 card col-1 border-dotted text-center">
+      <div class="card-body">
+        <i class="bi bi-image h1 text-secondary"></i>
+      </div>
+    </a>
+    <a href="javascript:void(0)" class="a4 d-none card col-1 border-dotted text-center">
+      <div class="card-body">
+        <i class="bi bi-x h1 text-secondary"></i>
+      </div>
+    </a>
   </div>
-  <button type="submit" class="btn btn-cbm">Insert Project</button>
+
+  <div class="preview-image row"></div>
+
+  <button type="submit" class="btn-ajax btn btn-cbm">Insert Project</button>
 </form>
+
+<div class="text-center his d-none">
+  <h4 class="title-1 fw-bold text-cbm animate__animated animate__flash animate__infinite animate__slow">Sedang proses upload</h4>
+  <p>Harap jangan close browser anda</p>
+</div>
+
+<div class="row his d-none">
+<div class="col-md-6 offset-md-3">
+<div>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-scs" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+    </div>
+</div>
+</div>
+</div>
+
     </div>
 </section>
 @endsection
-@section('css')
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-@endsection
 @section('js')
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
 <script>
 
-$("input[name='title']").keyup(function() {
-		var bos = $(this).val().toLowerCase().replace(/ /g, '-')
-             .replace(/[^\w-]+/g, '');
+// $("input[name='title']").keyup(function() {
+$("input[name='title']").change(function() {
+		var bos = $(this).val().toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
 			$.getJSON(`http://localhost:8000/api/projects/search/${bos}`,
 				function (res) {
 					if (res.code == 200) {
-            console.log('sudah ada judul');
+            alert(`Judul ${res.data.title} sudah digunakan, silahkan ganti judul !!`);
 					}
 				});
 	});
-
-    $('#summer').summernote({
-        tabsize: 2,
-        height: 600,
-        toolbar: [
-          ['style', ['bold', 'italic', 'underline', 'clear']],
-          ['font', ['strikethrough', 'superscript', 'subscript']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
-          ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-      });
-      
       $('.a1').on('click', function(){
         $('.file').trigger('click');
       });
@@ -100,5 +109,70 @@ $("input[name='title']").keyup(function() {
           $('.a2').text('Masukan Gambar');
         }
       });
+
+      $('.a3').on('click', function(){
+        $('#images').trigger('click');
+      });
+
+      $(function() {
+            var multiImgPreview = function(input, imgPreviewPlaceholder) {
+                if (input.files) {
+                    var filesAmount = input.files.length;
+                    for (i = 0; i < filesAmount; i++) {
+                        var reader = new FileReader();
+                        reader.onload = function(event) {
+                            $($.parseHTML('<img class="col-md-2 mb-3">')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                        }
+                        reader.readAsDataURL(input.files[i]);
+                    }
+                }
+            };
+            $('input[name="img_af[]"]').on('change', function() {
+              if (this) {
+                $('.a3').addClass('d-none');
+                $('.a4').removeClass('d-none');
+              }
+                multiImgPreview(this, 'div.preview-image');
+            });
+        });
+
+        $('.a4').on('click', function () {
+          $('#images').val('');
+          $('.preview-image img').remove();
+          $('.a3').removeClass('d-none');
+          $('.a4').addClass('d-none');
+        });
+
+        $(function () {
+            $(document).ready(function () {
+                $('#ajax-form').ajaxForm({
+                    beforeSend: function () {
+                        var percentage = '0';
+                    },
+                    uploadProgress: function (event, position, total, percentComplete) {
+                        var percentage = percentComplete;
+                        $('.progress .progress-bar').css("width", percentage+'%', function() {
+                          return $(this).attr("aria-valuenow", percentage) + "%";
+                        })
+                    },
+                    complete: function (xhr) {
+                        var dam = document.getElementById('liveMod');
+                        if(dam) {
+                            var toast = new bootstrap.Toast(dam);
+                            toast.show();
+                        }
+                        setTimeout(function(){
+                          window.location.href = `{{ route('projects.index') }}`;
+                        },2000);
+                    }
+                });
+            });
+        });
+
+        $('.btn-ajax').on('click',function(){
+          $('.his').removeClass('d-none');
+          $('form').hide();
+        });
+  
 </script>
 @endsection

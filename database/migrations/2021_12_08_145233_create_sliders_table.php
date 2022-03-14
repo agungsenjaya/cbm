@@ -20,6 +20,7 @@ class CreateSlidersTable extends Migration
             $table->integer('user_id');
             $table->string('img_mobile');
             $table->string('link');
+            $table->longText('content')->nullable();
             $table->enum('status',['active','deactive'])->default('deactive');
             $table->string('slug');
             $table->timestamps();

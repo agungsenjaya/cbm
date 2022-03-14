@@ -30,20 +30,20 @@
     </select>
   </div>
   </div>
-  <div class="my-3">
+  <div class="mb-3">
     <label for="" class="form-label">Gambar Utama</label>
     <div class="position-relative">
-    <div class="d-flex justify-content-between p-3 bg-light border border-dotted rounded a1 hvr-input">
+    <input type="file" class="file form-control form-control-lg" name="img" required>
+    <div class="to-center d-flex align-items-center justify-content-between px-3 form-control a1 hvr-input">
       <div>
         <span class="a2 opacity-50">Masukan Gambar</span>
       </div>
       <div>
         <div class="ps-3 border-start">
-          <i class="bi bi-image-fill"></i> 
+          <i class="bi bi-image-fill text-secondary"></i> 
         </div>
       </div>
     </div>
-    <input type="file" class="file d-none" name="img" required>
     </div>
   </div>
   <div class="mb-3">

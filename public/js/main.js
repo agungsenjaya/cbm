@@ -1,4 +1,4 @@
-var dom = document.getElementById('liveToast')
+var dom = document.getElementById('liveToast');
 if(dom) {
     var toast = new bootstrap.Toast(dom);
     toast.show();

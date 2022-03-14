@@ -1,11 +1,17 @@
 @extends('layouts.index')
 @section('content')
-<div class="bg-blog align-items-center d-flex">
-    <div class="container space-m">
-    <div class="text-center">
-            <h1 class="fw-bold">Artikel</h1>
-            <p>Dapatkan berita terbaru seputar pengecatan cbm</p>
+<div class="bg-cbm text-white">
+    <div class="bg-shape-1 space-m">
+    <div class="container">
+    <div class="row">
+    <div class="text-center col-md-8 offset-md-2">
+    <h2 class="fw-bold title-1 mb-0">
+              Artikel Pengecatan
+            </h2>
+            <p>Dapatkan berita seputar cbm dan pengecatan</p>
         </div>
+    </div>
+    </div>
     </div>
 </div>
 <section class="space-m">
@@ -29,21 +35,21 @@
                 <li class="py-4">
                     <div class="card border-0">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-3 mb-md-0">
                         <a href="{{ route('blog.view',['id' => $blo -> slug]) }}">
-                            <img src="https://dummyimage.com/600x500" alt="" width="100%">
+                            <div class="img gray-1 rounded" style="background:url({{ $blo->img }});background-position:center"></div>
                         </a>
                         </div>
                         <div class="col-md-8">
-                            <div class="d-flex justify-content-end">
+                            <div class="d-flex justify-content-end mb-3 mb-md-0">
                             <div>
                                 <div class="badge bg-cbm">
                                     {{ $blo->kategori }}
                                 </div>
                             </div>
                             </div>
-                            <h5 class="text-capitalize">{{ $blo->title }}</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, iusto. Recusandae fugiat rem, mollitia magnam officiis ullam iusto labore nulla in illo modi dignissimos tenetur, molestias suscipit ipsam est quas.</p>
+                            <p class="fw-semibold title-1 text-cbm text-capitalize">{{ $blo->title }}</p>
+                            <p>{!! substr($blo->content,0,120) !!}..</p>
                             <div class="card-footer d-flex justify-content-between bg-transparent">
                                 <div>
                                     <i class="bi bi-calendar2 me-2"></i>{{ $blo->created_at->format('d M Y') }}

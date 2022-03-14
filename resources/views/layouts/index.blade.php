@@ -3,13 +3,13 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
+<html prefix="og: https://ogp.me/ns#">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{{ config('app.name', 'Laravel') }}</title>
         
-        <meta name="description" content="">
+        <!-- <meta name="description" content=""> -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -26,6 +26,11 @@
         @yield('css')
     </head>
     <body>
+        <div class="fixed-bottom m-2" style="left:auto;right:0">
+            <a href="https://wa.me/6285720290848?text=Halo%20cbm%2C%20saya%20ingin%20menanyakan%20tentang%20pengecatan" target="_blank">
+                <img src="{{ asset('img/whatsapp.svg') }}" alt="" width="60">
+            </a>
+        </div>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->

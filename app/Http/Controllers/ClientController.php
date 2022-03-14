@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Project;
 use App\Blog;
 use App\Contact;
+use App\Brand;
 use App\Slider;
 use App\Mail\ContactMail;
 use DB,Session,Uuid,Validator,Mail;
@@ -14,12 +15,12 @@ class ClientController extends Controller
 {
     public function index()
     {
-        return view('client.home');
+        return view('client.home')->with('project', Project::all())->with('brand', Brand::all());
     }
     
     public function about()
     {
-        return view('client.about');
+        return view('client.about')->with('brand', Brand::all());
     }
     
     public function service()

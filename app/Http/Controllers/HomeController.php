@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Project;
 use App\Slider;
 use App\Blog;
+use App\Brand;
 use App\Contact;
 use App\User;
 use Hash,DB,Session,Validator,Auth, Str;
@@ -29,7 +30,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.index')->with('project', Project::all())->with('blog',Blog::all())->with('slider', Slider::all());
+        return view('admin.index')->with('project', Project::all())->with('blog',Blog::all())->with('contact', Contact::all())->with('brand', Brand::all());
     }
 
     public function mailist()
